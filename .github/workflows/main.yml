@@ -27,15 +27,15 @@ jobs:
           mvn clean verify
 
   build-and-push-docker-image:
-  needs: test-backend
-  runs-on: ubuntu-22.04
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2.5.0
+    needs: test-backend
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.5.0
 
-    - name: Build and push backend
-      uses: docker/build-push-action@v3
-      with:
-        context: ./simple-api
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple-api:latest
-        push: true
+      - name: Build and push backend
+        uses: docker/build-push-action@v3
+        with:
+          context: ./simple-api
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple-api:latest
+          push: true
