@@ -10,15 +10,17 @@ jobs:
   test-backend:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout your GitHub code
-        uses: actions/checkout@v2.5.0
+      # Checkout your GitHub code using actions/checkout@v2.5.0
+      - uses: actions/checkout@v2.5.0
 
+      # Set up JDK 17
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
+      # Navigate to the correct directory and build your app with Maven
       - name: Build and test with Maven
         run: |
           cd simple-api
@@ -28,13 +30,14 @@ jobs:
     needs: test-backend
     runs-on: ubuntu-22.04
     steps:
+      # Checkout code
       - name: Checkout code
         uses: actions/checkout@v2.5.0
 
+      # Build image and push backend
       - name: Build and push backend
         uses: docker/build-push-action@v3
         with:
           context: ./simple-api
-          push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:latest
-#ff
+          push: true
