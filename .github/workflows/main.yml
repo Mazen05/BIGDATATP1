@@ -24,5 +24,5 @@ jobs:
       # Navigate to the correct directory and build your app with Maven
       - name: Build and test with Maven
         run: |
-          cd <path-to-your-project-root-directory>
+          cd simple-api
           mvn clean verify
