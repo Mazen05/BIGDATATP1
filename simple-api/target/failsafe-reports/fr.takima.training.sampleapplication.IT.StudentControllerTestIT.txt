@@ -1,4 +1,32 @@
 -------------------------------------------------------------------------------
 Test set: fr.takima.training.sampleapplication.IT.StudentControllerTestIT
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.992 s - in fr.takima.training.sampleapplication.IT.StudentControllerTestIT
+Tests run: 7, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0.387 s <<< FAILURE! - in fr.takima.training.sampleapplication.IT.StudentControllerTestIT
+testPostStudent  Time elapsed: 0.046 s  <<< ERROR!
+org.springframework.jdbc.datasource.init.CannotReadScriptException: Cannot read SQL script from class path resource [InsertData.sql]; nested exception is java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+Caused by: java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+
+testUpdateStudent  Time elapsed: 0.058 s  <<< ERROR!
+org.springframework.jdbc.datasource.init.CannotReadScriptException: Cannot read SQL script from class path resource [InsertData.sql]; nested exception is java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+Caused by: java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+
+testPostStudentWithoutDepartment  Time elapsed: 0.043 s  <<< ERROR!
+org.springframework.jdbc.datasource.init.CannotReadScriptException: Cannot read SQL script from class path resource [InsertData.sql]; nested exception is java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+Caused by: java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+
+testGetNonExistingStudentById  Time elapsed: 0.064 s  <<< ERROR!
+org.springframework.jdbc.datasource.init.CannotReadScriptException: Cannot read SQL script from class path resource [InsertData.sql]; nested exception is java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+Caused by: java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+
+testPostStudentWithoutLastName  Time elapsed: 0.055 s  <<< ERROR!
+org.springframework.jdbc.datasource.init.CannotReadScriptException: Cannot read SQL script from class path resource [InsertData.sql]; nested exception is java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+Caused by: java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+
+testDeleteStudent  Time elapsed: 0.049 s  <<< ERROR!
+org.springframework.jdbc.datasource.init.CannotReadScriptException: Cannot read SQL script from class path resource [InsertData.sql]; nested exception is java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+Caused by: java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+
+testGetStudentById  Time elapsed: 0.052 s  <<< ERROR!
+org.springframework.jdbc.datasource.init.CannotReadScriptException: Cannot read SQL script from class path resource [InsertData.sql]; nested exception is java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+Caused by: java.io.FileNotFoundException: class path resource [InsertData.sql] cannot be opened because it does not exist
+
