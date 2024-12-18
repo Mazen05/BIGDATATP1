@@ -21,6 +21,14 @@ jobs:
         run: |
           cd simple-api
           mvn clean verify
+      - name: SonarCloud Analysis
+       run: 
+          mvn -B verify sonar:sonar \
+            -Dsonar.projectKey=mazen05 \
+            -Dsonar.organization=mazen05 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+ 
 
   build-and-push-docker-image:
     needs: test-backend
