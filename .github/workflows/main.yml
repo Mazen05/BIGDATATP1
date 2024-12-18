@@ -1,4 +1,5 @@
 name: CI devops 2024
+
 on:
   push:
     branches:
@@ -27,10 +28,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.5.0
-      - name: Build and push backend
+
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Build and push backend image
         uses: docker/build-push-action@v3
         with:
           context: ./simple-api
           tags: mazenhataki/bigdatatp1:latest
           push: true
-#f
