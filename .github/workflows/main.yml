@@ -8,28 +8,33 @@ on:
   pull_request:
 
 jobs:
+  # Step 1: Build and Test Backend
   test-backend:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2.5.0
+      - name: Checkout code
+        uses: actions/checkout@v2.5.0
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
+
       - name: Build and test with Maven
         run: |
           cd simple-api
           mvn clean verify
+
       - name: SonarCloud Analysis
-       run: 
+        run: |
           mvn -B verify sonar:sonar \
             -Dsonar.projectKey=mazen05 \
             -Dsonar.organization=mazen05 \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
- 
 
+  # Step 2: Build and Push Docker Image
   build-and-push-docker-image:
     needs: test-backend
     runs-on: ubuntu-22.04
@@ -44,5 +49,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./simple-api
-          tags: mazenhataki/bigdatatp1:latest
-          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
